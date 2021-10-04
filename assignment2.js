@@ -224,15 +224,3 @@ Object.grabValues = function (obj) {
 //};
 
 //console.log(Object.values(object1));
-        values = array.push(obj[value]);//push adds elements to end of an array
-    }
-    return array;//return the array
-};
-
-//const object1 = {//given example
-    //a: 'somestring',
-   // b: 42,
-    //c: false
-//};
-
-//console.log(Object.values(object1));
