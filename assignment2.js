@@ -80,9 +80,18 @@ Array.prototype.myEvery = function(callbackFn) {
 
 
 // REDUCE //
-Array.prototype.myReduce = function() {
-
+//const array = [1, 2, 3, 4];//example array
+Array.prototype.myReduce = function (callback, value) {
+    let total = 0;
+    for (let i = 0; i < this.length; i++) {
+        if (total == undefined) continue;//continue executes this part of the loop
+        total = callback(total, this[i], i, this, undefined);
+    }
+    return total;
 };
+//const reducer = (callback, value) => callback + value;
+//console.log(array.myReduce(reducer));//prints to the console
+//expected answer should be 10
 
 // INCLUDES //
 Array.prototype.myIncludes = function(callbackFn) {
@@ -109,9 +118,19 @@ Array.prototype.myIncludes = function(callbackFn) {
 // expected output: false
 
 // INDEXOF //
-Array.prototype.myIndexOf = function() {
-
+//const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];//example array
+Array.prototype.myIndexOf = function (searchElement, element) {
+    let animal = element//set argument to variable animal
+    for (let i = 0 || animal; i < this.length; i++) {
+        if (this[i] === searchElement) {
+            return i || animal;//returns position the animal is located in in the array
+        }
+    }
+    return -1;//returns -1 if false
 };
+//console.log(beasts.myIndexOf('bison'));// should output 1
+//console.log(beasts.myIndexOf('bison', 2));// should output 4
+//console.log(beasts.myIndexOf('giraffe'));// should output -1
 
 // PUSH //
 Array.prototype.myPush = function() {
@@ -134,8 +153,24 @@ Array.prototype.myPush = function() {
   // expected output: Array ["pigs", "goats", "sheep", "cows", "chickens", "cats", "dogs"]
 
 // LASTINDEXOF //
+//const animals = ['Dodo', 'Tiger', 'Penguin', 'Dodo'];//example array
 Array.prototype.myLastIndexOf = function (searchElement, element) {
+    let animal = element//set argument to variable animal
+    backwards = 1;
+    for (let i = this.length - backwards; i >= 0 || animal; i--) {//Basically switched around the for loop from previous function
+        //similar to myIndexOf but we are trying to return the last index
+        if (this[i] == searchElement) {
+            return i || animal;//returns position the animal is located in the array
+        }
+
+    }
+    return -1;//returns -1 if false
+//Array.prototype.myLastIndexOf = function (searchElement, element) {
+
 };
+//console.log(animals.myLastIndexOf('Dodo'));// should output 3
+//console.log(animals.myLastIndexOf('Tiger'));// should output 1
+
 
 // KEYS //
 Object.grabKeys = function(obj) {
@@ -178,6 +213,17 @@ Object.grabKeys = function(obj) {
 Object.grabValues = function (obj) {
     let array = [ ];//defined an empty array to grab and place values into
     for (let values in Object.grabValues(obj)) {//for every value in object, a new set of data is pushed into our new array
+        values = array.push(obj[value]);//push adds elements to end of an arra
+    }
+    return array;//return the array
+};
+//const object1 = {//given example
+   // a: 'somestring',
+   // b: 42,
+   // c: false
+//};
+
+//console.log(Object.values(object1));
         values = array.push(obj[value]);//push adds elements to end of an array
     }
     return array;//return the array
